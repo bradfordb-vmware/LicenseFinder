@@ -481,6 +481,18 @@ it in your projects's `build.sbt`
 licenseConfigurations := Set("compile", "provided")
 ```
 
+By default, `license_finder` will run the `dumpLicenseReport` task for _all_
+Scala language versions listed in `crossScalaVersions`. The default license
+report filename _does not_ include the Scala version and the report for later
+Scala versions will overwrite the report from earlier versions; depending on
+your build definition, this might not report all dependencies. To avoid this,
+update the `licenseReportTitle` to include either `scalaBinaryVersion` or
+`scalaVersion`:
+
+```scala
+licenseReportTitle := s"${normalizedName.value}_${scalaBinaryVersion.value}-licenses"
+```
+
 ## Requirements
 
 `license_finder` requires ruby >= 1.9.3, or jruby.

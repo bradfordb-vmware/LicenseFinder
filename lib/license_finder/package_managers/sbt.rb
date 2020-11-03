@@ -11,7 +11,7 @@ module LicenseFinder
     end
 
     def current_packages
-      command = "#{package_management_command} dumpLicenseReport"
+      command = "#{package_management_command} +dumpLicenseReport"
       _stdout, stderr, status = Dir.chdir(project_path) { Cmd.run(command) }
       raise "Command '#{command}' failed to execute: #{stderr}" unless status.success?
 

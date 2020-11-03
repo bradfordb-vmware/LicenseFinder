@@ -20,7 +20,7 @@ Category,License,Dependency,Notes
     describe '.current_packages' do
       before do
         allow(Dir).to receive(:chdir).with(Pathname('/fake/path')) { |&block| block.call }
-        allow(SharedHelpers::Cmd).to receive(:run).with('sbt dumpLicenseReport').and_return(['', '', cmd_success])
+        allow(SharedHelpers::Cmd).to receive(:run).with('sbt +dumpLicenseReport').and_return(['', '', cmd_success])
       end
 
       def stub_license_report(deps)
